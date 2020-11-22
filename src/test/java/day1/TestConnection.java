@@ -14,6 +14,24 @@ public class TestConnection {
         ResultSet rs = stmnt.executeQuery("SELECT * FROM REGIONS");
         rs.next(); // currently we are at the very first row
         System.out.println("first column value using index: --> " + rs.getString(1));
+        System.out.println("second column value using index: --> " + rs.getString(2));
+
+        //rs.getString (column label)
+
+        System.out.println("region_id at this row: --> " + rs.getString("region_id"));
+        System.out.println("region_name at this row: --> " + rs.getString("region_name"));
+
+        rs.next() ; // this will move us to next row so we can read next row
+        System.out.println("Region_ID at this row is : " + rs.getString("REGION_ID") );
+        System.out.println("Region_Name at this row is : " + rs.getString("REGION_NAME") );
+
+        rs.next() ; // this will move us to next row so we can read next row
+        System.out.println("Region_ID at this row is : " + rs.getString("REGION_ID") );
+        System.out.println("Region_Name at this row is : " + rs.getString("REGION_NAME") );
+
+
+
+
 
     }
 
