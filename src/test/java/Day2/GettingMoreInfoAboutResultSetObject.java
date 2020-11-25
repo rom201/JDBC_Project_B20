@@ -26,8 +26,12 @@ public class GettingMoreInfoAboutResultSetObject {
 
         for (int i = 1; i <= colCount; i++) {
             System.out.println("Cocumn "+ i + " is "+ rsmd.getColumnLabel(i));
-
         }
+
+
+        rs.close();
+        stmnt.close();
+        conn.close();
 
 
 
