@@ -11,9 +11,7 @@ public class DisplayingAllDataFromAllColumn {
         String password = "hr";
 
         Connection conn = DriverManager.getConnection(connectionStr, username, password);
-
         Statement stmnt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-
         ResultSet rs = stmnt.executeQuery("SELECT * FROM EMPLOYEES");
 
         ResultSetMetaData rsmd = rs.getMetaData();
@@ -45,13 +43,6 @@ public class DisplayingAllDataFromAllColumn {
         rs.close();
         stmnt.close();
         conn.close();
-
-
-
-
-
-
-
 
 
     }

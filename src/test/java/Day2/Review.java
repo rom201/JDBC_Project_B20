@@ -1,11 +1,19 @@
 package Day2;
 
+import utility.DB_Utility;
+
 import java.sql.*;
 
 public class Review {
 
     public static void main(String[] args) throws SQLException {
 
+        DB_Utility.createConnection();
+        ResultSet rs = DB_Utility.runQuery("SELECT * FROM JOBS");
+
+
+
+     /*
         String connectionStr = "jdbc:oracle:thin:@54.236.21.55:1521:XE";
         String username = "hr";
         String password = "hr";
@@ -15,7 +23,7 @@ public class Review {
         Statement stmnt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
         ResultSet rs = stmnt.executeQuery("SELECT * FROM JOBS");
-
+*/
         rs.first();// or
         System.out.println("First column value in Jobs " +rs.getString(1));
         System.out.println("Second column value in Jobs " +rs.getString(2));
@@ -50,9 +58,7 @@ public class Review {
         }
 
 // clean up connection and statement
-        rs.close();
-        stmnt.close();
-        conn.close();
+        DB_Utility.destroy();
 
 
 
