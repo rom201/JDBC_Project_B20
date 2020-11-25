@@ -49,7 +49,10 @@ public class Review {
             System.out.println("Min salary column as number " + rs.getDouble("min_salary"));
         }
 
-
+// clean up connection and statement
+        rs.close();
+        stmnt.close();
+        conn.close();
 
 
 
