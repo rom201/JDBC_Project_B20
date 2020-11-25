@@ -34,19 +34,12 @@ public class MovingResultSetPointer {
         rs.first();// first row
         rs.last();// last
         rs.afterLast();// after last
-        rs.absolute(3);// move to cpesific
+        rs.absolute(2);// move to cpesific
 
         rs.last();
+        //rs.first();
         int currentRowNum = rs.getRow();
         System.out.println("Row Count ="+currentRowNum);
-
-
-
-
-
-
-
-
 
 
 
