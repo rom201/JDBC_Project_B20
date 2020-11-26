@@ -17,11 +17,12 @@ public class UtilityPractice {
 
         //row count
         jobRS.last();
-        int rowCount = jobRS.getRow();
+        int rowCount = DB_Utility.getRowCount();
         System.out.println("rowCount = " + rowCount);
 
 
-
+        int colCount = DB_Utility.getColumnCount();
+        System.out.println("colCount = " + colCount);
 
 
 

@@ -38,7 +38,7 @@ public class DB_Utility {
     }
 
 
-    public static void destroy(){
+    public static void destroy() {
         try {
             rs.close();
             stmnt.close();
@@ -47,10 +47,48 @@ public class DB_Utility {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
-
     }
+
+    /** get row count
+     *
+     * @return
+     */
+    public static int getRowCount(){
+        int rowCount = 0;
+
+        try {
+            rs.last();
+            rowCount = rs.getRow();
+            // move cursor to beforefirst location    we have to fixed later
+            rs.beforeFirst();
+
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE GETTING ROW COUNT "+e.getMessage());
+        }
+        return rowCount;
+    }
+
+
+    /**
+     * Get the column count
+     * @return count of column
+     *
+     */
+
+    public  static int getColumnCount(){
+
+        int columnCount = 0;
+
+        try {
+            ResultSetMetaData rsmd = rs.getMetaData() ;
+            columnCount = rsmd.getColumnCount();
+
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE GETTING COLUMN COUNT "+e.getMessage());
+        }
+        return columnCount;
+    }
+
 
 
 
