@@ -4,6 +4,8 @@ import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DB_Utility {
 
@@ -87,6 +89,28 @@ public class DB_Utility {
             System.out.println("ERROR WHILE GETTING COLUMN COUNT "+e.getMessage());
         }
         return columnCount;
+    }
+
+
+    /**
+     *
+     * return all columns names as list<string>
+     */
+
+    public  static List<String> getColumnNames(){
+        List<String> columnList = new ArrayList<>();
+
+        try {
+            ResultSetMetaData rsmd = rs.getMetaData();
+            for (int colNum = 1; colNum <= getColumnCount() ; colNum++) {
+
+                String columnName = rsmd.getColumnLabel(colNum);
+                columnList.add(columnName);
+            }
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE GETTING ALL COLUMN NAMES "+ e.getMessage());
+        }
+        return columnList;
     }
 
 
