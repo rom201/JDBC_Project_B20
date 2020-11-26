@@ -19,7 +19,6 @@ public class DB_Utility {
         String username = "hr";
         String password = "hr";
 
-
         try {
             conn = DriverManager.getConnection(connectionStr, username, password);
             System.out.println("CONNECTION SUCCESSFUL");
@@ -29,7 +28,6 @@ public class DB_Utility {
 }
 
     public static ResultSet runQuery(String query){
-
         try {
             stmnt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmnt.executeQuery(query);
@@ -41,8 +39,6 @@ public class DB_Utility {
 
 
     public static void destroy(){
-
-
         try {
             rs.close();
             stmnt.close();

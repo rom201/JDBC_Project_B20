@@ -29,6 +29,13 @@ public class TestConnection {
         System.out.println("Region_ID at this row is : " + rs.getString("REGION_ID") );
         System.out.println("Region_Name at this row is : " + rs.getString("REGION_NAME") );
 
+
+        rs.close();
+        stmnt.close();
+        conn.close();
+
+
+
     }
 
 

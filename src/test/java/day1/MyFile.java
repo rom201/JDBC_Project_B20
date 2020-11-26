@@ -25,6 +25,10 @@ public class MyFile {
         }
 
 
+        rs.close();
+        stmnt.close();
+        conn.close();
+
 
     }
 }

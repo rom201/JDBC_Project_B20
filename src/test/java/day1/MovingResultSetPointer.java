@@ -42,7 +42,9 @@ public class MovingResultSetPointer {
         System.out.println("Row Count ="+currentRowNum);
 
 
-
+        rs.close();
+        stmnt.close();
+        conn.close();
 
     }
 
