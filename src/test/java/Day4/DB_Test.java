@@ -23,7 +23,7 @@ public class DB_Test {
     }
 
     @Test
-    public void tets3rdRowSecondColumn(){
+    public void test3rdRowSecondColumn(){
         DB_Utility.runQuery("select * from regions");
         Assertions.assertEquals("Asia", DB_Utility.getColumnDataAtRow(3,2));
 
