@@ -17,9 +17,9 @@ public class DB_Utility {
 
 
     public static void createConnection() {
-        String connectionStr = "jdbc:oracle:thin:@54.236.21.55:1521:XE";
-        String username = "hr";
-        String password = "hr";
+        String connectionStr = ConfigurationReader.getProperty("database.url");
+        String username = ConfigurationReader.getProperty("database.username");
+        String password = ConfigurationReader.getProperty("database.password");
 
         try {
             conn = DriverManager.getConnection(connectionStr, username, password);
@@ -29,12 +29,13 @@ public class DB_Utility {
         }
     }
 
+
     public static ResultSet runQuery(String query) {
         try {
             stmnt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             rs = stmnt.executeQuery(query);
         } catch (SQLException e) {
-            System.out.println("Error while getting resultser " + e.getMessage());
+            System.out.println("Error while getting resultSet " + e.getMessage());
             ;
         }
         return rs;
@@ -43,9 +44,15 @@ public class DB_Utility {
 
     public static void destroy() {
         try {
-            rs.close();
-            stmnt.close();
-            conn.close();
+            if(rs != null) {
+                rs.close();
+            }
+            if(stmnt != null) {
+                stmnt.close();
+            }
+            if( conn != null) {
+                conn.close();
+            }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -194,6 +201,8 @@ public class DB_Utility {
         List<String> cellValuesList = new ArrayList<>();
 
         try {
+            rs.beforeFirst();
+
             while (rs.next()) {
                 String cellValue = rs.getString(colNum);
                 cellValuesList.add( cellValue ) ;
@@ -241,7 +250,10 @@ public class DB_Utility {
             while (rs.next()) {
 
                 for (int colNum = 1; colNum <= getColumnCount(); colNum++) {
-                    System.out.print(rs.getString(colNum) + "\t");
+                    //System.out.print(rs.getString(colNum) + "\t");
+                    //  for making it pretty
+                    System.out.printf("%-35s", rs.getString(colNum));
+
                 }
                 System.out.println();
             }

@@ -4,9 +4,7 @@ import utility.DB_Utility;
 import java.sql.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UtilityPractice {
 
@@ -56,8 +54,18 @@ public class UtilityPractice {
 
         System.out.println("first row rowMap = " + DB_Utility.getRowMap(1)  );
 
+// if one row can be represented as one map object
+        // what data structure is good to store 19 rows of data
+        // List of Map
 
+        // Get 2nd row and 4th row and save it into list of map as practice
+        Map<String,String> row2Map = DB_Utility.getRowMap(2);
+        Map<String,String> row4Map = DB_Utility.getRowMap(4);
+        List<Map<String,String> > rowMapList = new ArrayList<>();
+        rowMapList.add(row2Map);
+        rowMapList.add(row4Map);
 
+        System.out.println( rowMapList );
         
         
         
